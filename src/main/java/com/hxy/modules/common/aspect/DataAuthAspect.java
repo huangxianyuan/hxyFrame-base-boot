@@ -59,23 +59,23 @@ public class DataAuthAspect {
         dataAuthSql.append(" AND (");
 
         //获取用户授权部门
-        List<String> baidList = UserUtils.getDateAuth(Constant.DataAuth.BA_DATA.getValue());
+        String baids = UserUtils.getDateAuth(Constant.DataAuth.BA_DATA.getValue());
         //获取用户授权机构
-        List<String> bapidList = UserUtils.getDateAuth(Constant.DataAuth.BAP_DATA.getValue());
+        String bapids = UserUtils.getDateAuth(Constant.DataAuth.BAP_DATA.getValue());
         dataAuthSql.append(tableAlias);
         dataAuthSql.append("create_id = ");
         dataAuthSql.append("'" + UserUtils.getCurrentUserId() + "'");
-        if(baidList != null && baidList.size() > 0){
-            String baids = StringUtils.toStringBySpilt(baidList);
+        if(baids != null && !StringUtils.isEmpty(baids)){
+            dataAuthSql.append("OR ");
             dataAuthSql.append(tableAlias);
-            dataAuthSql.append("OR baid IN(");
+            dataAuthSql.append("baid IN(");
             dataAuthSql.append(baids);
             dataAuthSql.append(")");
         }
-        if(bapidList != null && bapidList.size() > 0){
-            String bapids = StringUtils.toStringBySpilt(bapidList);
+        if(bapids != null && !StringUtils.isEmpty(bapids)){
+            dataAuthSql.append("OR ");
             dataAuthSql.append(tableAlias);
-            dataAuthSql.append("OR bapid IN(");
+            dataAuthSql.append("bapid IN(");
             dataAuthSql.append(bapids);
             dataAuthSql.append(")");
         }

@@ -41,15 +41,6 @@ public class BaseEntity {
     private String bapid;
 
     /**
-     * 部门ids 部门数据权限
-     */
-    private List<String> baidList;
-    /**
-     * 机构ids 机构数据权限
-     */
-    private List<String> bapidList;
-
-    /**
      * 部门名称
      */
     private String baName;
@@ -131,19 +122,4 @@ public class BaseEntity {
         this.bapName = bapName;
     }
 
-    public List<String> getBaidList() {
-        return baidList;
-    }
-
-    public void setBaidList(List<String> baidList) {
-        this.baidList = baidList;
-    }
-
-    public List<String> getBapidList() {
-        return bapidList;
-    }
-
-    public void setBapidList(List<String> bapidList) {
-        this.bapidList = bapidList;
-    }
 }

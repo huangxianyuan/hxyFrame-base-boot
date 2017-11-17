@@ -45,20 +45,19 @@ public class UserUtils {
      * @param type 1=部门权限，2=机构权限，3=部门机构权限
      * @return
      */
-    public static List<String> getDateAuth(String type){
+    public static String getDateAuth(String type){
         UserEntity user = UserUtils.getCurrentUser();
         if (user ==null){
             return null;
         }
         if(Constant.DataAuth.BA_DATA.getValue().equals(type)){
-            return user.getBaidList();
+            return user.getBaids();
         }
         if(Constant.DataAuth.BAP_DATA.getValue().equals(type)){
-            return user.getBapidList();
+            return user.getBapids();
         }
         if(Constant.DataAuth.ALL_DATA.getValue().equals(type)){
-            user.getBaidList().addAll(user.getBapidList());
-            return user.getBaidList();
+            return user.getBaids()+user.getBapids();
         }
         return null;
     }

@@ -46,7 +46,14 @@ public class UserEntity extends BaseEntity implements Serializable {
 	 */
 	private String newPassWord;
 
-
+	/**
+	 * 部门ids 部门数据权限
+	 */
+	private String baids;
+	/**
+	 * 机构ids 机构数据权限
+	 */
+	private String bapids;
 
 	/**
 	 * 设置：id主键
@@ -167,5 +174,21 @@ public class UserEntity extends BaseEntity implements Serializable {
 
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+
+	public String getBaids() {
+		return baids;
+	}
+
+	public void setBaids(String baids) {
+		this.baids = baids;
+	}
+
+	public String getBapids() {
+		return bapids;
+	}
+
+	public void setBapids(String bapids) {
+		this.bapids = bapids;
 	}
 }

@@ -2,6 +2,7 @@ package com.hxy.component.shiro;
 
 import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.utils.ShiroUtils;
+import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.sys.entity.MenuEntity;
 import com.hxy.modules.sys.entity.RoleEntity;
 import com.hxy.modules.sys.entity.UserEntity;
@@ -9,7 +10,6 @@ import com.hxy.modules.sys.service.MenuService;
 import com.hxy.modules.sys.service.RoleService;
 import com.hxy.modules.sys.service.UserService;
 import org.apache.commons.collections.map.HashedMap;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -68,7 +68,7 @@ public class MyRealm extends AuthorizingRealm {
                menuEntities = menuService.queryByUserId(user.getId());
             }
             for (MenuEntity menuEntity:menuEntities){
-                if(menuEntity != null && StringUtils.isNotEmpty(menuEntity.getPermission())){
+                if(menuEntity != null && !StringUtils.isEmpty(menuEntity.getPermission())){
                     permissions.add(menuEntity.getPermission());
                 }
             }
@@ -90,8 +90,8 @@ public class MyRealm extends AuthorizingRealm {
         List<String> baidList = userService.queryBapidByUserIdArray(user.getId());
         //用户对应的部门集合
         List<String> bapidList= userService.queryBaidByUserIdArray(user.getId());
-        user.setBapidList(bapidList);
-        user.setBaidList(baidList);
+        user.setBaids(StringUtils.toStringBySqlIn(baidList));
+        user.setBapids(StringUtils.toStringBySqlIn(bapidList));
         SimpleAuthenticationInfo sainfo=new SimpleAuthenticationInfo(user,user.getPassWord(), ByteSource.Util.bytes(user.getSalt()),getName());
         return sainfo;
     }
