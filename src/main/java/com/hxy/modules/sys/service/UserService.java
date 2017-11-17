@@ -18,9 +18,9 @@ import java.util.Map;
 public interface UserService {
 	
 	UserEntity queryObject(String id);
-	
+
 	List<UserEntity> queryList(Map<String, Object> map);
-	
+
 	int queryTotal(Map<String, Object> map);
 	
 	void save(UserEntity user);

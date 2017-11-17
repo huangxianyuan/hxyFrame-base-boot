@@ -12,11 +12,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DataAuth {
-    /**
-     * 表别名
-     * @return
-     */
-    String tableAlias() default "";
-
-
+    /**  表的别名 */
+    String tableAlias() default  "";
 }

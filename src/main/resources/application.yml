@@ -12,16 +12,16 @@ spring:
     # 环境 dev|test|pro
     profiles:
         active: dev
-    # jackson时间格式化
-    jackson:
-        time-zone: GMT+8
-        date-format: yyyy-MM-dd HH:mm:ss
+
     http:
         multipart:
             max-file-size: 100MB
             max-request-size: 100MB
             enabled: true
-    resources: # 指定静态资源的路径
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+    resources: # 静态资源的路径
         static-locations: classpath:/statics/,classpath:/views/
     redis:
         database: 0
@@ -40,10 +40,9 @@ mybatis:
     mapperLocations: classpath:mapper/**/*.xml
     configLocation: classpath:mybatis-config.xml
 
-
 # APP模块
 jwt:
-    # 加密秘钥
+    # token 加密秘钥
     secret: 3733b9170b1e4994bddcf1ce62c4c082
     # token有效时长，7天，单位秒
     expire: 604800

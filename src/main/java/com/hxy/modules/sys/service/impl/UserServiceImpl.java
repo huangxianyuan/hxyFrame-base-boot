@@ -2,6 +2,7 @@ package com.hxy.modules.sys.service.impl;
 
 
 import com.hxy.modules.common.annotation.DataAuth;
+import com.hxy.modules.common.annotation.SysLog;
 import com.hxy.modules.common.utils.ShiroUtils;
 import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.common.common.Constant;
@@ -43,7 +44,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-    @DataAuth(tableAlias = "u")
 	public List<UserEntity> queryList(Map<String, Object> map){
 		return userDao.queryList(map);
 	}
@@ -54,7 +54,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-    @DataAuth(tableAlias = "u")
 	public int queryTotal(Map<String, Object> map){
 		return userDao.queryTotal(map);
 	}

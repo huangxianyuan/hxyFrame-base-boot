@@ -81,11 +81,7 @@ public class UserController extends BaseController {
 	@RequestMapping("/info")
 	public Result info(){
 		UserEntity user = userService.queryObject(ShiroUtils.getUserId());
-		//待办条数
-//        int myUpcomingCount = actModelerService.myUpcomingCount();
-        //我的通知条数
-        int myNoticeCount = noticeService.MyNoticeCount();
-        return Result.ok().put("user", user).put("myNoticeCount",myNoticeCount);
+        return Result.ok().put("user", user);
 	}
 	
 	/**
