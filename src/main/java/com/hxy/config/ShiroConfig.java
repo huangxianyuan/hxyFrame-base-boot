@@ -44,19 +44,11 @@ public class ShiroConfig {
         return simpleCookie;
     }
 
-    @Bean("sessionDao")
-    public SessionDAO sessionDAO(){
-        CachingShiroSessionDao sessionDao = new CachingShiroSessionDao();
-        //sessionId前缀
-        sessionDao.setPrefix("shiro-session:");
-        //注意中央缓存有效时间要比本地缓存有效时间长
-        sessionDao.setSeconds(1800);
-        return sessionDao;
-    }
-
-
     @Bean("sessionManager")
-    public SessionManager sessionManager(Cookie sessionIdCookie, SessionDAO sessionDAO, ShiroSessionListener shiroSessionListener){
+    public SessionManager sessionManager(Cookie sessionIdCookie, CachingShiroSessionDao sessionDAO, ShiroSessionListener shiroSessionListener){
+        sessionDAO.setPrefix("shiro-session:");
+        //注意中央缓存有效时间要比本地缓存有效时间长
+        sessionDAO.setSeconds(1800);
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         //设置全局会话超时时间，默认30分钟(1800000)
         sessionManager.setGlobalSessionTimeout(60 * 60 * 1000);
