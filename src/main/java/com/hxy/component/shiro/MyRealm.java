@@ -10,10 +10,7 @@ import com.hxy.modules.sys.service.MenuService;
 import com.hxy.modules.sys.service.RoleService;
 import com.hxy.modules.sys.service.UserService;
 import org.apache.commons.collections.map.HashedMap;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -84,7 +81,7 @@ public class MyRealm extends AuthorizingRealm {
             throw new AuthenticationException("帐号密码错误");
         }
         if(Constant.ABLE_STATUS.NO.getValue().equals(user.getStatus())){
-            throw new AuthenticationException("帐号被禁用,请联系管理员!");
+            throw new LockedAccountException("帐号被禁用,请联系管理员!");
         }
         //用户对应的机构集合
         List<String> baidList = userService.queryBapidByUserIdArray(user.getId());
