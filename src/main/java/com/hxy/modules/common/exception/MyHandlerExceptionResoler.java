@@ -6,6 +6,7 @@ import com.hxy.modules.common.utils.WebUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +23,7 @@ import java.io.PrintWriter;
  * @Auther hxy
  * @Date 2017/7/21
  */
-
+@Component
 public class MyHandlerExceptionResoler implements HandlerExceptionResolver {
     private static Logger logger = LoggerFactory.getLogger(MyHandlerExceptionResoler.class);
 
