@@ -10,9 +10,8 @@
 - oschina仓库：https://git.oschina.net/huangxianyuan/hxyFrame.git
 - github仓库：https://github.com/huangxianyuan/hxyFrame-base-boot.git
 
-**hxyFrame地址** 
-- oschina仓库：https://git.oschina.net/huangxianyuan/hxyFrame.git
-- github仓库：https://github.com/huangxianyuan/hxyFrame.git
+- 提供了SpringMVC版hxyFrame，获取【[SpringMVC](https://gitee.com/huangxianyuan/hxyFrame)】
+- 提供了SpringBoot工作流程版本hxyFrame-activiti-boot，获取【[hxyFrame-activiti-boot工作流版](https://gitee.com/soEasyCode/hxyFrame-activiti-boot)】
 
  **演示环境** 
 - 由于服务器资源有限，没有单独部署，下面是hxyFrame演示地址，页面效果一样。
