@@ -24,7 +24,7 @@ spring:
     resources: # 静态资源的路径
         static-locations: classpath:/statics/,classpath:/views/
     redis:
-        database: 0
+        database: 2
         hostName: 127.0.0.1
         port: 6379
         password:       # 密码（默认为空）
